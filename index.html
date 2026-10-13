@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perpustakaan Kampus</title>
+
+  <!-- File CSS: harus bernama style.css dan satu folder dengan index.html -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="halaman">
+
+    <!-- ===== TABEL BUKU BESTSELLER ===== -->
+    <section class="bagian">
+      <h1>Daftar Buku Bestseller</h1>
+
+      <div class="wadah-tabel">
+        <table id="tabelBuku">
+          <thead>
+            <tr>
+              <th>Judul</th>
+              <th>Pengarang</th>
+              <th>Tahun</th>
+              <th>Sisa Stok</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Laut Bercerita</td><td>Leila S. Chudori</td><td>2017</td><td>3</td></tr>
+            <tr><td>Bumi</td><td>Tere Liye</td><td>2014</td><td>5</td></tr>
+            <tr><td>Dilan 1990</td><td>Pidi Baiq</td><td>2014</td><td>2</td></tr>
+            <tr><td>Laskar Pelangi</td><td>Andrea Hirata</td><td>2005</td><td>4</td></tr>
+            <tr><td>Cantik Itu Luka</td><td>Eka Kurniawan</td><td>2002</td><td>1</td></tr>
+            <tr><td>Negeri 5 Menara</td><td>Ahmad Fuadi</td><td>2009</td><td>6</td></tr>
+            <tr><td>Pulang</td><td>Leila S. Chudori</td><td>2012</td><td>2</td></tr>
+            <tr><td>Ayat-Ayat Cinta</td><td>Habiburrahman El Shirazy</td><td>2004</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== FORM PEMINJAMAN ===== -->
+    <section class="bagian">
+      <form id="formPinjam" class="kartu-form" action="#" method="post" novalidate>
+        <h2>Form Peminjaman</h2>
+
+        <div class="kolom">
+          <label for="nama">Nama</label>
+          <input type="text" id="nama" name="nama" placeholder="Masukkan nama" autocomplete="name">
+          <small class="pesan-error" id="errNama"></small>
+        </div>
+
+        <div class="kolom">
+          <label for="judul">Judul Buku</label>
+          <select id="judul" name="judul">
+            <option value="">Pilih buku</option>
+            <option>Laut Bercerita</option>
+            <option>Bumi</option>
+            <option>Dilan 1990</option>
+            <option>Laskar Pelangi</option>
+            <option>Cantik Itu Luka</option>
+            <option>Negeri 5 Menara</option>
+            <option>Pulang</option>
+            <option>Ayat-Ayat Cinta</option>
+          </select>
+          <small class="pesan-error" id="errJudul"></small>
+        </div>
+
+        <div class="kolom">
+          <label for="lama">Lama Pinjam (hari)</label>
+          <input type="number" id="lama" name="lama" min="1" placeholder="Maks. 14 hari">
+          <small class="pesan-error" id="errLama"></small>
+        </div>
+
+        <button type="submit" class="tombol-pinjam">Pinjam</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- File JS: harus bernama script.js dan satu folder dengan index.html -->
+  <script src="script.js" defer></script>
+</body>
+</html>
