@@ -32,8 +32,23 @@ body {
   gap: 28px;
 }
 
-h1 { font-size: 1.15rem; margin: 0 0 12px; }
+/* ============ JUDUL WEBSITE ============ */
+.kepala h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4.5vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.subjudul {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  color: var(--teks-redup);
+}
+
 h2 { font-size: 1.05rem; margin: 0 0 16px; }
+.judul-bagian { font-size: 1.15rem; margin: 0 0 12px; }
 
 /* ============ TABEL ============ */
 /* Tinggi dibatasi + overflow-y: auto -> tabel bisa di-scroll,
@@ -136,7 +151,111 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 }
 .tombol-pinjam:hover { filter: brightness(0.92); }
 
+/* ============ POP NOTIFIKASI ============ */
+.notif {
+  width: min(92vw, 380px);
+  padding: 0;
+  overflow: hidden;
+  color: var(--teks);
+  background: var(--kartu);
+  border: 0;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(20, 24, 50, 0.28);
+
+  /* warna bawaan; diganti per jenis di bawah */
+  --warna: var(--aksen);
+  --warna-muda: var(--header-latar);
+}
+
+.notif[data-jenis="peringatan"] { --warna: #d99a00; --warna-muda: #fff3cc; }
+.notif[data-jenis="konfirmasi"] { --warna: var(--aksen); --warna-muda: var(--header-latar); }
+.notif[data-jenis="sukses"]     { --warna: var(--hijau); --warna-muda: #dff3e8; }
+
+.notif::backdrop {
+  background: rgba(20, 24, 50, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.notif[open] { animation: notif-muncul 0.22s ease; }
+@keyframes notif-muncul {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.notif-isi {
+  padding: 28px 24px 22px;
+  text-align: center;
+  border-top: 6px solid var(--warna);
+}
+
+.notif-ikon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  color: var(--warna);
+  background: var(--warna-muda);
+  border-radius: 50%;
+}
+
+.notif h3 { margin: 0 0 6px; font-size: 1.1rem; }
+
+.notif-pesan {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.notif-detail {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: var(--teks-redup);
+  background: var(--latar);
+  border-radius: 8px;
+}
+.notif-detail:empty { display: none; }
+
+.notif-aksi {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn {
+  min-width: 88px;
+  padding: 10px 20px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: filter 0.15s ease, background-color 0.15s ease;
+}
+.btn[hidden] { display: none; }
+
+.btn-batal {
+  color: #374151;
+  background: #fff;
+  border: 1px solid #d5d9e2;
+}
+.btn-batal:hover { background: var(--latar); }
+
+.btn-ok {
+  color: #fff;
+  background: #1f2937;
+  border: 1px solid #1f2937;
+}
+.btn-ok:hover { filter: brightness(1.25); }
+
 @media (max-width: 480px) {
   th, td { padding: 10px; font-size: 0.85rem; }
   .kartu-form { max-width: 100%; }
+  .notif-aksi .btn { flex: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
