@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Perpustakaan Kampus</title>
+  <title>Sistem Peminjaman Buku Perpustakaan</title>
 
   <!-- File CSS: harus bernama style.css dan satu folder dengan index.html -->
   <link rel="stylesheet" href="style.css">
@@ -11,9 +11,15 @@
 <body>
   <main class="halaman">
 
+    <!-- ===== JUDUL WEBSITE ===== -->
+    <header class="kepala">
+      <h1>Sistem Peminjaman Buku Perpustakaan</h1>
+      <p class="subjudul">Layanan sirkulasi buku untuk mahasiswa</p>
+    </header>
+
     <!-- ===== TABEL BUKU BESTSELLER ===== -->
     <section class="bagian">
-      <h1>Daftar Buku Bestseller</h1>
+      <h2 class="judul-bagian">Daftar Buku Bestseller</h2>
 
       <div class="wadah-tabel">
         <table id="tabelBuku">
@@ -77,6 +83,21 @@
     </section>
 
   </main>
+
+  <!-- ===== POP NOTIFIKASI (dipakai untuk peringatan, konfirmasi, dan berhasil) ===== -->
+  <dialog id="dialogNotif" class="notif" aria-labelledby="notifJudul" aria-describedby="notifPesan">
+    <div class="notif-isi">
+      <div class="notif-ikon" id="notifIkon" aria-hidden="true"></div>
+      <h3 id="notifJudul"></h3>
+      <p class="notif-pesan" id="notifPesan"></p>
+      <p class="notif-detail" id="notifDetail"></p>
+      <div class="notif-aksi">
+        <!-- Urutan tombol: Batal di kiri, OK di kanan -->
+        <button type="button" class="btn btn-batal" id="notifBatal">Batal</button>
+        <button type="button" class="btn btn-ok" id="notifOk">OK</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- File JS: harus bernama script.js dan satu folder dengan index.html -->
   <script src="script.js" defer></script>
